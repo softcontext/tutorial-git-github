@@ -84,7 +84,7 @@ tag는 가장 가까운 부모 태그를 나타냅니다. numCommits은 그 태�
 
 히스토리가 엇갈려서 상황이 애매모호하기 때문에 git은 여러분이 push하지 못하게 합니다. 사실 여러분이 작업을 공유하기전에 원격 저장소의 최신 상태를 합치도록 강제합니다.
 
-<img src="../image/push-fail.png" width="70%"/>
+<img src="../image/push-fail.png" width="60%"/>
 
 그림과 같은 상태에서 다음 명령은 실행되지 않아서 아무것도 잃어나지 않습니다.
 
@@ -102,7 +102,7 @@ tag는 가장 가까운 부모 태그를 나타냅니다. numCommits은 그 태�
 
 git fetch로 원격 저장소의 변경정보를 가져오고, 새 변경들로 우리 작업을 리베이스 했습니다. 그런 다음 이제 git push하면 업로드가 됩니다! 다음 화면을 참고하여 작업결과를 확인하세요.
 
-<img src="../image/fetch-rebase-push.png" width="70%"/>
+<img src="../image/fetch-rebase-push.png" width="60%"/>
 
 rebase 명령을 사용하지 않고 해결할 수 있는 다른 방법으로는 merge가 있습니다.
 
@@ -120,7 +120,7 @@ git merge가 여러분의 작업을 옮기지는 않지만 merge 커밋을 생�
 
 git fetch로 원격 저장소의 변경정보를 가져옵니다. 원격 저장소의 변경을 반영하기 위해서 새 작업을 우리 작업으로 병합했습니다. 이제 git push하면 업로드가 됩니다.
 
-<img src="../image/fetch-merge-push.png" width="70%"/>
+<img src="../image/fetch-merge-push.png" width="60%"/>
 
 rebase 대신 merge 했을 때에 차이점을 그림으로 살펴보세요.
 
@@ -259,7 +259,7 @@ foo 브랜치가 이미 만들어진 상태에서 수행합니다. 위 명령은
 `git commit`
 `git push`
 
-<img src="../image/branch-u-foo-push.png" width="70%"/>
+<img src="../image/branch-u-foo-push.png" width="60%"/>
 
 `git checkout master`
 
@@ -294,102 +294,102 @@ foo 브랜치가 이미 만들어진 상태에서 수행합니다. 위 명령은
 명령을 하나씩 따라하면서 그 의미를 추론해 보세요.
 
 ### 새 프로젝트 생성
-mkdir git_lesson\
-cd git_lesson
+`mkdir git_lesson`  
+`cd git_lesson`
 
 ### 로컬 깃 저장소 생성
-git init\
-git status
+`git init`  
+`git status`
 
 ### 새 파일 생성, 깃 추적 확인
-echo 'Hello World' > hello.txt\
-git status
+`echo 'Hello World' > hello.txt`  
+`git status`
 
 ### 스테이지에 등록
-git add hello.txt\
-git status
+`git add hello.txt`  
+`git status`
 
 ### 커밋하기
-git commit -m 'first commit'\
-git status
+`git commit -m 'first commit'`  
+`git status`
 
 ### 커밋 히스토리 조회
-git log
+`git log`
 
 ### 브랜치 목록 조회
-git branch
+`git branch`
 
 ### 새 브랜치 생성
-git branch hotfix1\
-git branch
+`git branch hotfix1`  
+`git branch`
 
 ### 브랜치 이동
-git checkout hotfix1\
-git branch
+`git checkout hotfix1`  
+`git branch`
 
 ### 파일목록 조회
-ls -al
+`ls -al`
 
 ### 파일에 코드 추가, 상태 확인
-echo 'Good Night' > hello.txt\
-type hello.txt\
-git status
+`echo 'Good Night' > hello.txt`  
+`type hello.txt`  
+`git status`
 
 ### 워킹 디렉토리 파일 변경내용 되돌리기
-git checkout HEAD -- hello.txt\
-type hello.txt\
-git status
+`git checkout HEAD -- hello.txt`  
+`type hello.txt`  
+`git status`
 
 -- 옵션은 앞 부분에 옵션과 패스 문자열을 구분하는 용도로 사용합니다. 
 `git checkout hello` 에서 hello는 브랜치임을 나타냅니다.
 `git checkout -- hello` 에서 hello는 파일 패스를 가리킵니다.
 
 ### 파일에 코드 추가, 상태 확인
-echo 'Good Night' > hello.txt\
-type hello.txt\
-git status
+`echo 'Good Night' > hello.txt`  
+`type hello.txt`  
+`git status`
 
 ### 스테이징 및 커밋하기
-git commit -am 'changed hello.txt'\
-git status\
-git log
+`git commit -am 'changed hello.txt'`  
+`git status`  
+`git log`
 
 ### 브랜치 전환
-git branch\
-git checkout master\
-git branch
+`git branch`  
+`git checkout master`  
+`git branch`
 
 ### 브랜치 합병하기
-git merge hotfix1\
-type hello.txt\
-git status
+`git merge hotfix1`  
+`type hello.txt`  
+`git status`
 
 ### 코드 변경하기
-echo 'added on master' >> hello.txt\
-git status
+`echo 'added on master' >> hello.txt`  
+`git status`
 
 ### 커밋하기
-git commit -am 'updated hello.txt'\
-git status\
-git log
+`git commit -am 'updated hello.txt'`  
+`git status`  
+`git log`
 
 ### 브랜치 전환하기
-git branch\
-git checkout hotfix1\
-git branch\
-type hello.txt
+`git branch`  
+`git checkout hotfix1`  
+`git branch`  
+`type hello.txt`
 
 ### 합병하기(합병 커밋 남기기)
-git merge master --no-ff\
-git status\
-type hello.txt
+`git merge master --no-ff`  
+`git status`  
+`type hello.txt`
 
 합병 시 merge commit 기록을 남기기 위해서 `--no-ff` 옵션을 사용한다.
 
 ### 합병 커밋 취소하기
-git reset --merge ORIG_HEAD\
-git log\
-git status\
-type hello.txt
+`git reset --merge ORIG_HEAD`  
+`git log`  
+`git status`  
+`type hello.txt`
 
 `ORIG_HEAD`는 합병 커밋이 아닌 이전에 수행된 오리지널 커밋을 가리킨다. 실수로 지운 커밋을 되돌릴 때 사용한다.

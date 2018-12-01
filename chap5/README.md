@@ -250,13 +250,13 @@ reset은 과거 상태로 되돌아 가는 것입니다. push 작업 후에는 �
 
 HEAD가 가리키는 커밋의 부모의 커밋으로 되돌립니다. 인덱스와 워킹 디렉토리의 내용은 유지됩니다.
 
-<img src="../image/reset/reset-soft.png" width="70%"/>
+<img src="../image/reset/reset-soft.png" width="60%"/>
 
 ### `$ git reset (--mixed) [commit]`
 
 지정한 커밋 이 후의 모든 커밋을 되돌립니다. 로컬에 변경사항은 보존합니다. 옵션을 생략하면 `--mixed`가 적용됩니다.
 
-<img src="../image/reset/reset-mixed.png" width="70%"/>
+<img src="../image/reset/reset-mixed.png" width="60%"/>
 
 ### `$ git reset --hard [commit]`
 
@@ -264,13 +264,13 @@ HEAD가 가리키는 커밋의 부모의 커밋으로 되돌립니다. 인덱스
 
 그림의 예제는 파일의 v3버전을 아직 깃이 커밋으로 보관하고 있기 때문에 `git reflog` 를 이용해서 다시 복원할 수 있지만 만약 커밋한 적 없다면 깃이 덮어쓴 데이터는 복원할 수 없다는 점을 명심해야 합니다.
 
-<img src="../image/reset/reset-hard.png" width="70%"/>
+<img src="../image/reset/reset-hard.png" width="60%"/>
 
 ### `$ git reset [file]`
 
 git reset은 브랜치로 하여금 예전의 커밋을 가리키도록 이동시키는 방법으로 변경 내용을 되돌립니다. 이런 관점에서 "히스토리를 고쳐쓴다"라고 말할 수 있습니다. 즉, git reset은 마치 애초에 커밋하지 않은 것처럼 예전 커밋으로 옮기는 것입니다.
 
-<img src="../image/reset/reset-path1.png" width="70%"/>
+<img src="../image/reset/reset-path1.png" width="60%"/>
 
 파일을 언스테이지(Unstage) 상태로 변경시키나 파일 컨텐츠는 그대로 보존합니다. `git reset --mixed HEAD -- [file]` 명령의 줄임입니다. 
 
@@ -278,13 +278,13 @@ git reset은 브랜치로 하여금 예전의 커밋을 가리키도록 이동�
 
 `gid add [file]` 명령으로 인덱스 영역을 워킹 디렉토리와 같게 만들었다면 `git reset [file]` 명령은 정 반대의 작업을 수행하는 것이 됩니다. 이것이 `git status` 명령의 수행결과에서 `git reset [file]` 명령을 보여주는 이유다. 이 명령으로 파일을 Unstaged 상태로 만들 수 있다. 
 
-<img src="../image/reset/reset-path2.png" width="70%"/>
+<img src="../image/reset/reset-path2.png" width="60%"/>
 
 ### `$ git reset eb43bf -- file.txt`
 
 특정 커밋을 명시하면 깃은 `HEAD에서 파일을 가져오는 것`이 아니라 지정한 커밋에서 파일을 가져온다.
 
-<img src="../image/reset/reset-path3.png" width="70%"/>
+<img src="../image/reset/reset-path3.png" width="60%"/>
 
 ***
 
@@ -296,7 +296,7 @@ git reset은 브랜치로 하여금 예전의 커밋을 가리키도록 이동�
 
 reset 명령은 checkout 명령처럼 HEAD가 가리키는 브랜치 포인터를 바꾸지는 않는다. HEAD는 계속 현재 브랜치 포인터를 가리키고 있고, 현재 브랜치 포인터가 가리키는 커밋을 바꾼다.
 
-<img src="./image/checkout/reset-vs-checkout.png" width="60%"/>
+<img src="../image/checkout/reset-vs-checkout.png" width="60%"/>
 
 checkout과 reset 명령은 되돌린다는 점에서 비슷해 보이지만 결정적인 차이점이 있다.
 
@@ -680,7 +680,7 @@ source와 destination을 따로 지정할 수 있게 되면서, 이제 원격관
 
 깃은 foo^의 위치를 알아내서 원격 저장소에 아직 반영되지 않은 커밋들을 업로드하고 destination 브랜치인 master를 갱신합니다. 만약 destination 브랜치가 없다면 자동으로 생성됩니다.
 
-<img src="../image/source-destination.png" width="70%"/>
+<img src="../image/source-destination.png" width="60%"/>
 
 ***
 
@@ -708,7 +708,7 @@ git fetch에 다음 명령어와 같이 place를 지정해주면:
 
 깃이 foo~1을 origin의 place로 지정하고 커밋들을 내려받아 bar(로컬 브랜치)에 추가했습니다. foo와 origin/foo는 갱신되지 않습니다. destination을 지정해줬기 때문입니다.
 
-<img src="../image/fetch-source-destination.png" width="70%"/>
+<img src="../image/fetch-source-destination.png" width="60%"/>
 
 `git fetch`를 인자없이 수행하면 원격저장소에서 모든 원격 브랜치들의 커밋들을 내려받습니다.
 

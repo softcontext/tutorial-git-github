@@ -1,4 +1,4 @@
-# Summary
+# Table of Contents
 
 * [책 소개](README.md)
 * [1. 깃 소개](chap1/README.md)

@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:200,300,400,500,600,700,900&subset=korean');
+
+p {
+  font-family: "Noto Serif KR", sans-serif;
+  font-size: 14px;
+}
