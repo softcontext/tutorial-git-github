@@ -1,4 +1,4 @@
-# Table of Contents
+# Summary
 
 * [책 소개](README.md)
 * [1. 깃 소개](chap1/README.md)
@@ -9,3 +9,4 @@
 * [6. 브랜칭 전략](chap6/README.md)
 * [7. 시나리오 학습](chap7/README.md)
 * [A1. VI 사용법](appx1/README.md)
+

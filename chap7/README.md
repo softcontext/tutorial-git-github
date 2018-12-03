@@ -393,3 +393,57 @@ foo 브랜치가 이미 만들어진 상태에서 수행합니다. 위 명령은
 `type hello.txt`
 
 `ORIG_HEAD`는 합병 커밋이 아닌 이전에 수행된 오리지널 커밋을 가리킨다. 실수로 지운 커밋을 되돌릴 때 사용한다.
+
+***
+
+# git pull 시 발생하는 문제해결
+
+```console
+error: Your local changes to the following files would be overwritten by merge:
+        [파일들...]
+Please, commit your changes or stash them before you can merge.
+```
+
+워킹 디렉토리의 커밋되지 않은 변화가 존재합니다. 먼저 커밋을 하거나 스태쉬해서 보관처리를 하지 않으면 머지 작업 중 사라질 수 있습니다. 따라서 pull 명령이 수행되지 않았습니다.
+
+`git stash` 명령으로 변화를 임시로 보관합니다.
+`git pull` 명령을 다시 수행합니다.
+`git stash pop` 명령으로 변화를 복원합니다.
+
+```console
+error: The following untracked working tree files would be overwritten by merge:
+        [파일들...]
+Please move or remove them before you can merge.
+```
+
+한 번도 add 하거나 commit 되지 않은 신규 파일이 존재합니다. 개발자가 직접 작성한 내용이라면 미리 예방할 수 있으나 IDEA 도구 같은 것을 사용하는 경우 개발자가 인지하지 못하는 상황에서 변화가 생길 수 있고 이러한 에러를 만날 수 있습니다. 에러 메시지는 문제가 되는 파일들을 이동하거나 지우라고 요청하고 있습니다. 이 경우, `git stash` 하여도 해결되지 않습니다. `추적하고 있지 않은(untracked) 파일`은 기본적으로 보관되지 않습니다.
+
+## 방법 #1
+
+`git stash -u` 명령으로 untracked 상태의 파일도 보관합니다. `git stash pop` 명령은 untracked 였던 파일도 untracked 상태로 복원합니다. 스태쉬할 때 마다 다음 명령셋을 수행한다면 위 에러메시지를 원천봉쇄할 수 있습니다.
+
+```
+git add --all
+git stash
+git pull
+```
+
+## 방법 #2
+
+작업하고 있던 파일을 Stash 하지 않고 단순히 그 파일들을 치워버리고 싶을 때가 있다. `git clean` 명령이 그 일을 한다. 보통은 Merge나 외부 도구가 만들어낸 파일을 지우거나 이전 빌드 작업으로 생성된 각종 파일을 지우는 데 필요하다.
+
+이 명령을 사용할 때는 신중해야 한다. 이 명령을 사용하면 워킹 디렉토리 안의 추적하고 있지 않은 모든 파일이 지워지기 때문이다. 명령을 실행하고 나서 후회해도 소용없다. 지워진 파일은 돌아오지 않는다. git stash –all 명령을 이용하면 지우는 건 똑같지만, 먼저 모든 파일을 Stash 하므로 좀 더 안전하다.
+
+`git clean`
+
+워킹 디렉토리의 불필요한 파일들을 전부 지우려면 `git clean` 을 사용한다. 
+
+`git clean -f -d`
+
+추적 중이지 않은 모든 정보를 워킹 디렉토리에서 지우고 싶다면 `git clean -f -d` 명령을 사용하자. 이 명령은 하위 디렉토리까지 모두 지워버린다. -f 옵션은 강제(force)의 의미이며 "진짜로 그냥 해라"라는 뜻이다.
+
+`$ git clean -d -n`
+
+이 명령을 실행했을 때 어떤 일이 일어날지 미리 보고 싶다면 -n 옵션을 사용한다. -n 옵션은 “가상으로 실행해보고 어떤 파일들이 지워질지 알려달라” 라는 뜻이다.
+
+git clean 이 무슨 짓을 할지 확신이 안들 때는 항상 -n 옵션을 붙여서 먼저 실행해보자. 
